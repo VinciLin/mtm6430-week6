@@ -1,10 +1,16 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <!-- original format -->
+      <!-- <router-link to="/">Home</router-link>|
+      <router-link to="/about">About</router-link>-->
+
+      <!-- blind to an object -->
+      <router-link :to="{ name:'home'}">Home</router-link>|
+      <router-link :to="{ name:'about' }">About</router-link>|
+      <router-link :to="{ name:'todo-list' }">Todo List</router-link>
     </div>
-    <router-view />
+    <router-view/>
   </div>
 </template>
 
