@@ -14,6 +14,7 @@
 <script>
 import Todo from "@/components/Todo.vue";
 import TodoForm from "@/components/TodoForm.vue";
+import axios from "axios";
 
 export default {
   data() {
@@ -31,6 +32,20 @@ export default {
     },
     addTodo(todo) {
       this.todoList.push(todo);
+      axios
+        .put(
+          "https://fangyuan-vue-and-axios.firebaseio.com/data.json",
+          this.todoList
+        )
+        // put not run , then will run,(response => {}) means :function (response){}
+        .then(response => {
+          console.log(response);
+          console.log('Your data was saved status: " + response.status');
+        })
+        // catch the error
+        .catch(error => {
+          console.log(error);
+        });
     }
   }
 };
